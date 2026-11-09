@@ -15,7 +15,7 @@ Solve the questions below on their respective platforms. populate the given file
 ## How To Submit
 
 1. Fork this repo and then clone the forked repo
-2. Add your code to respective files and screenshots to the screenshots folder
+2. Add your code to respective files and screenshots to the screenshots folder (create the screenshots folder at the root)
 3. Submit the link to your repo through [this form](https://docs.google.com/forms/d/e/1FAIpQLSc-HLNcfnIGyhzX0lNWxTFLJq57Pyqslsi0RryrkmBlIJV1jQ/viewform?usp=publish-editor)
 
 
