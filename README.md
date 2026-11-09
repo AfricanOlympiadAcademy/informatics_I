@@ -8,7 +8,7 @@ Solve the questions below on their respective platforms. populate the given file
 - [Social Distancing](https://usaco.org/index.php?page=viewproblem2&cpid=1038)
 - [Maximum Median](https://codeforces.com/contest/1201/problem/C)
 - [Valid Palindrome II](https://leetcode.com/problems/valid-palindrome-ii/) (Required: Use Recursion)
-- [Valid Parentheses](https://leetcode.com/problems/valid-palindrome-ii/)
+- [Valid Parentheses](https://leetcode.com/problems/valid-parentheses/description/)
 - [Kth Largest Element in a Stream](https://leetcode.com/problems/kth-largest-element-in-a-stream/description/)
 - [Implement Queue using Stacks](https://leetcode.com/problems/implement-queue-using-stacks/?envType=problem-list-v2&envId=queue)
 
