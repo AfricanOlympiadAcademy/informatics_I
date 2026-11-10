@@ -1,67 +1,73 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<int> check_sum_two(int a, int b, vector<pair<long long, int>> &list, long long target){
-    while(a < b){
-        if(list[a].first + list[b].first > target){
-            b--;
+int cases(int N, int K, vector<int> &diamonds){
+    vector<int> counts= {};
+    for(int i = 0 ; i < N; i ++){
+        counts.push_back(0);
+    }
+    
+    int i = 0;
+    int j = 0;
+    while(i < N){
+        while((j < N) && (diamonds[j] - diamonds[i] <= K)){
+            j++;
         }
-        else if(list[a].first + list[b].first < target){
-            a++;
+        counts[i] = j - i;
+        i++;
+    }
+    
+    vector<int> max_c= {};
+    for(int k = 0 ; k <= N; k ++){
+        max_c.push_back(0);
+    }
+    
+    int a = N - 1;
+    while(a >= 0){
+        if(counts[a] > max_c[a+1]){
+            max_c[a] = counts[a];
         }
         else{
-            vector<int> v;
-            v.push_back(list[a].second);
-            v.push_back(list[b].second);
-            return v;
+            max_c[a] = max_c[a+1];
         }
+        a--;
     }
-    return {};
-}
-
-vector<int> check_sum_three(int n, long long x, vector<pair<long long, int>> &list){
-    for(int i = 0; i < n; i++){
-        int a = i + 1; 
-        int b = n - 1; 
-        long long target = x - list[i].first;
-        
-        vector<int> v = check_sum_two(a, b, list, target);
-        if(!v.empty()){
-            v.insert(v.begin(), list[i].second);
-            return v;
+    
+    int ans = 0;
+    int b = 0;
+    while(b < N){
+        int p = counts[b] + max_c[b + counts[b]];
+        if(p > ans){
+            ans = p;
         }
+        b++;
     }
-    return {};
+    
+    return ans;
 }
 
 int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
-    int n;
-    long long x;
-    cin >> n >> x;
+    freopen("diamond.in", "r", stdin);
+    freopen("diamond.out", "w", stdout);
     
-    vector<pair<long long, int>> list;
-    for(int i = 0; i < n; i++){
-        long long m;
+    int N;
+    int K;
+    cin >> N >> K;
+    
+    vector<int> diamonds= {};
+    for(int i = 0 ; i < N; i ++){
+        int m;
         cin >> m;
-        list.push_back({m, i + 1});
+        diamonds.push_back(m);
     }
     
-    sort(list.begin(), list.end());
+    sort(diamonds.begin(),diamonds.end());
     
-    vector<int> v = check_sum_three(n, x, list);
-    
-    if(v.empty()){
-        cout << "IMPOSSIBLE\n";
-        return 0;
-    }
-    
-    for(int i : v){
-        cout << i << " ";
-    }
-    cout << "\n";
+    int ans = cases(N,K,diamonds);
+    cout << ans << "\n";
     
     return 0;
 }
